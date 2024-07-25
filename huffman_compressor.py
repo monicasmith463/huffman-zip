@@ -18,10 +18,12 @@ class Compressor:
 
 
     def decompress_file(self, input_filepath, output_filepath):
-        if self.trees[input_filepath] not in self.trees:
+        if input_filepath not in self.trees:
             raise Exception("Only previously compressed files can be processed at this time")
         huffman_tree = self.trees[input_filepath]
 
         with open(input_filepath, 'r') as input_file:
             data = input_file.read()
-        huffman_tree.decode(data)
+        output_file = open(output_filepath, 'w')
+        output_file.write(huffman_tree.decode(data))
+        output_file.close()

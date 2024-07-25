@@ -1,6 +1,6 @@
 import argparse
 from collections import Counter
-from compressor import Compressor  # Assume you have implemented Huffman coding in a module
+from huffman_compressor import Compressor
 
 def main():
     parser = argparse.ArgumentParser(description='Compress files using Huffman coding.')
@@ -9,11 +9,15 @@ def main():
     parser.add_argument('output_file', type=str, help='Output file after processing')
     
     args = parser.parse_args()
+    compressor = Compressor()
 
     if args.action == 'compress':
         compressor.compress_file(args.input_file, args.output_file)
     elif args.action == 'decompress':
-        compressor.decompress_file(args.input_file, args.output_file)
+        try:
+            compressor.decompress_file(args.input_file, args.output_file)
+        except:
+            print("Could not decompress file. Try compressing it first.")
     else:
         print("Invalid action. Valid actions are 'compress' or 'decompress'.")
 
