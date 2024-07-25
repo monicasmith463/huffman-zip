@@ -12,7 +12,6 @@ class TestHuffmanTree(unittest.TestCase):
         self.assertIsInstance(self.huffman_tree.root, HuffmanNode)
     
     def test_encode_tree(self):
-        # Assert encoding dictionary correctness
         self.assertIsNotNone(self.huffman_tree.encodings)
         self.assertEqual(self.huffman_tree.encodings['A'], '1100')
         self.assertEqual(self.huffman_tree.encodings['B'], '1101')
@@ -20,6 +19,15 @@ class TestHuffmanTree(unittest.TestCase):
         self.assertEqual(self.huffman_tree.encodings['D'], '101')
         self.assertEqual(self.huffman_tree.encodings['E'], '111')
         self.assertEqual(self.huffman_tree.encodings['F'], '0')
+    
+    def test_decode_tree(self):
+        self.assertIsNotNone(self.huffman_tree.decodings)
+        self.assertEqual(self.huffman_tree.decodings['1100'], 'A')
+        self.assertEqual(self.huffman_tree.decodings['1101'], 'B')
+        self.assertEqual(self.huffman_tree.decodings['100'], 'C')
+        self.assertEqual(self.huffman_tree.decodings['101'], 'D')
+        self.assertEqual(self.huffman_tree.decodings['111'], 'E')
+        self.assertEqual(self.huffman_tree.decodings['0'], 'F')
 
 if __name__ == '__main__':
     unittest.main()

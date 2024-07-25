@@ -14,6 +14,7 @@ class HuffmanTree:
         self.frequencies = frequencies
         self.root = self._build_tree()
         self.encodings = self._build_encodings() 
+        self.decodings = self._build_decodings()
 
     def _build_tree(self):
         '''private method to build a H-tree'''
@@ -37,6 +38,7 @@ class HuffmanTree:
     def _build_encodings(self):
         '''private method to build an encodings dict'''
         encodings = {}
+        
         def dfs(node, path):
             if node is None:
                 return
@@ -49,4 +51,6 @@ class HuffmanTree:
         dfs(self.root, '')
         return encodings    
 
-
+    def _build_decodings(self):
+        '''private method to build a decodings dict'''
+        return { encoding : char for char, encoding in self.encodings.items() } 
