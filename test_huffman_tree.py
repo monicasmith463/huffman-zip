@@ -11,7 +11,7 @@ class TestHuffmanTree(unittest.TestCase):
         self.assertIsNotNone(self.huffman_tree.root)
         self.assertIsInstance(self.huffman_tree.root, HuffmanNode)
     
-    def test_encode_tree(self):
+    def test_build_encodings_tree(self):
         self.assertIsNotNone(self.huffman_tree.encodings)
         self.assertEqual(self.huffman_tree.encodings['A'], '1100')
         self.assertEqual(self.huffman_tree.encodings['B'], '1101')
@@ -19,15 +19,17 @@ class TestHuffmanTree(unittest.TestCase):
         self.assertEqual(self.huffman_tree.encodings['D'], '101')
         self.assertEqual(self.huffman_tree.encodings['E'], '111')
         self.assertEqual(self.huffman_tree.encodings['F'], '0')
-    
-    def test_decode_tree(self):
-        self.assertIsNotNone(self.huffman_tree.decodings)
-        self.assertEqual(self.huffman_tree.decodings['1100'], 'A')
-        self.assertEqual(self.huffman_tree.decodings['1101'], 'B')
-        self.assertEqual(self.huffman_tree.decodings['100'], 'C')
-        self.assertEqual(self.huffman_tree.decodings['101'], 'D')
-        self.assertEqual(self.huffman_tree.decodings['111'], 'E')
-        self.assertEqual(self.huffman_tree.decodings['0'], 'F')
+
+    def test_encode(self):
+        encoded_string = self.huffman_tree.encode('ABCDEFABCABC')
+        self.assertIsInstance(encoded_string, str)
+        self.assertEqual(encoded_string, '1100110110010111101100110110011001101100')
+
+    def test_decode(self):
+        decoded_string = self.huffman_tree.decode('1100110110010111101100110110011001101100')
+        self.assertIsInstance(decoded_string, str)
+        self.assertEqual(decoded_string, 'ABCDEFABCABC')
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -38,7 +38,7 @@ class HuffmanTree:
     def _build_encodings(self):
         '''private method to build an encodings dict'''
         encodings = {}
-        
+
         def dfs(node, path):
             if node is None:
                 return
@@ -54,3 +54,22 @@ class HuffmanTree:
     def _build_decodings(self):
         '''private method to build a decodings dict'''
         return { encoding : char for char, encoding in self.encodings.items() } 
+    
+    def encode(self, data):
+        return ''.join([self.encodings[char] for char in data])
+    
+    def decode(self, data):
+        decoded_message = []
+        current_node = self.root
+
+        for bit in data:
+            if bit == '0':
+                current_node = current_node.left
+            elif bit == '1':
+                current_node = current_node.right
+
+            if current_node.left is None and current_node.right is None:
+                decoded_message.append(current_node.char)
+                current_node = self.root  # Reset to the root for next character
+
+        return ''.join(decoded_message)

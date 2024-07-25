@@ -1,12 +1,13 @@
 import unittest
 import os
-from cli import compress_file
+from compressor import Compressor
 
 class TestCli(unittest.TestCase):
     def setUp(self):
         self.input_filename = './test_input.txt'
         self.output_filename = './test_output'
-        compress_file(self.input_filename, self.output_filename)
+        c = Compressor()
+        c.compress_file(self.input_filename, self.output_filename)
 
     def tearDown(self):
         if os.path.exists(self.output_filename):

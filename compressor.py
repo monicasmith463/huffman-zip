@@ -12,13 +12,16 @@ class Compressor:
         frequencies = Counter(data)
         huffman_tree = HuffmanTree(frequencies)
         output_file = open(output_filepath, 'w')
-
-        for char in data:
-            output_file.write(huffman_tree.encodings[char])
+        output_file.write(huffman_tree.encode(data))
         output_file.close()
-        print(f"Compression successful. Output file: {output_file}")
         self.trees[output_filepath] = huffman_tree
 
 
     def decompress_file(self, input_filepath, output_filepath):
-        if 
+        if self.trees[input_filepath] not in self.trees:
+            raise Exception("Only previously compressed files can be processed at this time")
+        huffman_tree = self.trees[input_filepath]
+
+        with open(input_filepath, 'r') as input_file:
+            data = input_file.read()
+        huffman_tree.decode(data)
