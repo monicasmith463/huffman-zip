@@ -1,6 +1,7 @@
-import unittest
 import os
 import subprocess
+import unittest
+
 
 class TestCLI(unittest.TestCase):
 
@@ -27,7 +28,7 @@ class TestCLI(unittest.TestCase):
 
     def run_cli(self, *args):
         """Helper function to run the CLI with arguments."""
-        result = subprocess.run(['python', 'cli.py'] + list(args))
+        result = subprocess.run(['python', 'huffman_zip/cli.py'] + list(args))
         return result.returncode, result.stdout, result.stderr
     
     def test_compress(self):

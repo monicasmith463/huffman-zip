@@ -1,5 +1,7 @@
 import unittest
-from huffman_tree import HuffmanTree, HuffmanNode 
+
+from huffman_zip.huffman_tree import HuffmanNode, HuffmanTree
+
 
 class TestHuffmanTree(unittest.TestCase):
     def setUp(self):

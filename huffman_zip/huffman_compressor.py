@@ -1,6 +1,6 @@
 from collections import Counter
-from huffman_tree import HuffmanTree
-from bitstring import BitArray, Bits
+from huffman_zip.huffman_tree import HuffmanTree
+from bitstring import BitArray
 import os
 import shelve
 

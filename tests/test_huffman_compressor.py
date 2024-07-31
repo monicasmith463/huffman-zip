@@ -1,6 +1,8 @@
-import unittest
 import os
-from huffman_compressor import Compressor
+import unittest
+
+from huffman_zip.huffman_compressor import Compressor
+
 
 class TestCli(unittest.TestCase):
     def setUp(self):
