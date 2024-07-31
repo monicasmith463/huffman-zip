@@ -16,8 +16,8 @@ def main():
     elif args.action == 'decompress':
         try:
             compressor.decompress_file(args.input_file, args.output_file)
-        except:
-            print("Could not decompress file. Try compressing it first.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
     else:
         print("Invalid action. Valid actions are 'compress' or 'decompress'.")
 

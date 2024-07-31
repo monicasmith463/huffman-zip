@@ -22,17 +22,18 @@ class HuffmanTree:
         heapify(q)
         # merge nodes until one remains (the root)
         while len(q) > 1:
-            # take 2 lowest freqency nodes
+            # take the 2 lowest freqency nodes
             freq1, node1 = heappop(q)
             freq2, node2 = heappop(q)
 
-            # merge them, combine the freq
+            # merge them, combine the frequencies
             new_freq = freq1 + freq2
             new_node = HuffmanNode('', freq1 + freq2)
 
             new_node.left = node1
             new_node.right = node2
             heappush(q, (new_freq, new_node))
+        # return the root of the tree
         return heappop(q)[1]
      
     def _build_encodings(self):
@@ -70,6 +71,6 @@ class HuffmanTree:
 
             if current_node.left is None and current_node.right is None:
                 decoded_message.append(current_node.char)
-                current_node = self.root  # Reset to the root for next character
+                current_node = self.root
 
         return ''.join(decoded_message)

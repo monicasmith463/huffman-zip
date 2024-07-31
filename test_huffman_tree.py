@@ -3,7 +3,6 @@ from huffman_tree import HuffmanTree, HuffmanNode
 
 class TestHuffmanTree(unittest.TestCase):
     def setUp(self):
-        # Initialize HuffmanTree with frequency_dict
         self.frequency_dict = {'A': 5, 'B': 9, 'C': 12, 'D': 13, 'E': 16, 'F': 45}
         self.huffman_tree = HuffmanTree(self.frequency_dict)
 
