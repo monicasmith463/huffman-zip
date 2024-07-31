@@ -1,6 +1,5 @@
 import argparse
-from collections import Counter
-from huffman_compressor import Compressor
+from huffman_zip.huffman_compressor import Compressor
 
 def main():
     parser = argparse.ArgumentParser(description='Compress files using Huffman coding.')

@@ -12,7 +12,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'huffman-zip=cli:main',
+            'huffman-zip=huffman_zip.cli:main',
         ],
     },
     author='Monica Smith',
